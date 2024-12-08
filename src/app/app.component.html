@@ -1,0 +1,30 @@
+<mat-toolbar class="navbar">
+  <div class="logo">
+    <img src="../assets/images/tuc logo.png" alt="Logo" class="logo-img" />
+  </div>
+  <div class="navLinks">
+    <button mat-button routerLink="/home">Home</button>
+    <button mat-button routerLink="/admin">Admin</button>
+  </div>
+  <button class="menuBtn" mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>{{ sidenav.opened ? 'close' : 'menu' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" fixedInViewport>
+    <div class="sidenav-content">
+      <button mat-button routerLink="/home">Home</button>
+      <button mat-button routerLink="/admin">Admin</button>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<!-- The content area will now be handled by the router-outlet below -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

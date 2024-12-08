@@ -1,0 +1,8 @@
+<div class="row mt-5">
+    <div class="col-md-5">
+        <app-question-list *ngFor="let question of allQuestionsArr$|async" [getQuestion]="question"></app-question-list>
+    </div>
+    <div class="col-md-7">
+        <app-single-question></app-single-question>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<mat-card>
+    <mat-card-title align="center">
+        Add New Question
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+            <!-- Question Title -->
+            <mat-form-field appearance="fill">
+                <mat-label>Question Title</mat-label>
+                <input matInput formControlName="questionTitle" placeholder="Enter question title">
+                <mat-error *ngIf="formGroup.get('questionTitle')?.invalid && formGroup.get('questionTitle')?.touched">
+                    Question title is required
+                </mat-error>
+            </mat-form-field>
+
+             <!-- Question answer -->
+            <mat-form-field appearance="fill">
+                <mat-label>Question Answer</mat-label>
+                <input matInput formControlName="questionAnswer" placeholder="Enter question Answer">
+                <mat-error *ngIf="formGroup.get('questionAnswer')?.invalid && formGroup.get('questionAnswer')?.touched">
+                    Question title is required
+                </mat-error>
+            </mat-form-field>
+
+
+            <!-- Answers Section -->
+            <div formArrayName="answers">
+                <div *ngFor="let answer of answersArray.controls; let i = index" [formGroupName]="i">
+
+                    <!-- Text Answer Field -->
+                    <div class="mt-2" *ngIf="answer.get('type')?.value === 'text'">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Text Answer</mat-label>
+                            <textarea matInput formControlName="answerText"
+                                placeholder="Enter your text answer"></textarea>
+                            <mat-error *ngIf="answer.get('answerText')?.invalid && answer.get('answerText')?.touched">
+                                Text answer is required
+                            </mat-error>
+                            <button mat-button type="button" color="warn" (click)="removeAnswer(i)">Remove Answer</button>
+
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Code Answer Field -->
+                    <div class="mt-2" *ngIf="answer.get('type')?.value === 'code'">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Code Answer</mat-label>
+                            <textarea matInput formControlName="answerCode" placeholder="Enter your code"></textarea>
+                            <mat-error *ngIf="answer.get('answerCode')?.invalid && answer.get('answerCode')?.touched">
+                                Code answer is required
+                            </mat-error>
+                            <button mat-button type="button" color="warn" (click)="removeAnswer(i)">Remove Answer</button>
+
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Remove Answer Button -->
+                </div>
+            </div>
+
+
+            <!-- difficulty layer -->
+            <mat-form-field appearance="fill" class="w-50">
+                <mat-label>Difficulty</mat-label>
+                <mat-select formControlName="difficulty">
+                    <mat-option value="easy">Easy</mat-option>
+                    <mat-option value="medium">Medium</mat-option>
+                    <mat-option value="hard">Hard</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formGroup.get('difficulty')?.invalid && formGroup.get('difficulty')?.touched">
+                    Please select a difficulty level
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Buttons to Add Text or Code Answer -->
+            <div class="button-group">
+                <button mat-stroked-button color="primary" type="button" (click)="addTextAnswer()">Add Text Answer</button>
+                <button mat-stroked-button color="primary" type="button" (click)="addCodeAnswer()">Add Code Answer</button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-button d-flex justify-content-between">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Submit</button>
+                <button mat-raised-button color="warn" type="button" (click)="onClearForm()">Clear Form</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

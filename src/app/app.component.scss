@@ -1,0 +1,71 @@
+/* General styling */
+.navbar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.menuBtn {
+    display: none;
+}
+
+.sidenav-container {
+    display: flex;
+}
+
+.sidenav {
+    width: 250px;
+    background-color: #eeeeee;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* Arrange the links in a column */
+    align-items: flex-start;
+    /* Align the links to the left */
+}
+
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    button {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        /* Add space between buttons */
+    }
+}
+
+.content {
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navLinks {
+        display: none;
+    }
+
+    .menuBtn {
+        display: block;
+    }
+
+    .sidenav {
+        width: 200px;
+    }
+
+    .sidenav-content button {
+        width: auto;
+    }
+}

@@ -1,0 +1,52 @@
+/* General form container styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Align mat-form-fields */
+  mat-form-field {
+    width: 100%;
+  }
+
+  /* Space between question title and ID */
+  mat-form-field + mat-form-field {
+    margin-top: 16px;
+  }
+
+  /* Add some spacing between text/code answer fields */
+  .mt-2 {
+    margin-top: 16px;
+  }
+
+  /* Styling for the buttons inside button-group */
+  .button-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    justify-content: flex-start;
+  }
+
+  /* Styling for the remove answer button */
+  button[type="button"] {
+    margin-top: 8px;
+  }
+
+  /* Align submit button at the bottom */
+  .submit-button {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  /* Optional: Add some margin to the form if you want it centered vertically */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
